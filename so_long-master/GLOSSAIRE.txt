@@ -1,0 +1,64 @@
+De un je doit config la carte 
+1 pour un mur
+C une piece
+E pour sortir
+P le joueur
+0 les espace vide
+
+exemple :
+
+1111111111111
+10010000000C1
+1000011111001
+1P0011E000001
+1111111111111
+
+onn a donc acces a des texture quon va implementer par exemple 1 je pourrai
+le attribue une texture etc.
+
+condition
+
+si jarrive a la position 1 alors me bloquer 
+si jarrive dans une position 0 alors jai le choix dallez en haut bas etc
+je doit configuerer aussi wasd et q pour fermer le jeu 
+P va etre la position de mon joueur.
+si jarrive a C alors remove C et ajouter +1 a mon compteur de piece.
+
+en resume il me faut :
+
+-un fichier pour gerer les position : cordonner si jarrive devant un 1 a 
+la position jsp alors minterdire dallez tout droit
+des fichier pour gerer la map : condition pour pas sortir de la map appeler ma fonction wasd recup de piece etc,
+apres avoir recuperer toute les piece alors la afficher E sinon rien afficher.
+-un fichier main qui serra de base.
+
+
+
+Ce que chat gpt me propose :
+D'accord, cela clarifie bien les étapes nécessaires pour ton projet. Voici un plan général pour t'aider à démarrer :
+
+Fichier pour gérer les positions (positions.c et positions.h) :
+
+Définis une structure pour représenter la carte et les positions des différents éléments (murs, pièces, joueur, sortie).
+Implémente une fonction pour initialiser la carte en lisant le fichier de configuration.
+Ajoute une fonction pour vérifier si une position est valide (si elle ne contient pas un mur).
+Implémente une fonction pour vérifier si la position actuelle est la sortie ou une pièce.
+Si la position est une pièce, mets à jour le compteur de pièces.
+Fichier pour gérer la map (map.c et map.h) :
+
+Implémente une fonction pour afficher la carte dans la fenêtre graphique en utilisant les textures appropriées.
+Ajoute une fonction pour gérer les déplacements du joueur en fonction des touches WASD.
+Intègre la logique de contrôle de la sortie, de la collecte des pièces et de la victoire.
+Fichier main (main.c) :
+
+Initialise la fenêtre graphique avec MiniLibX.
+Charge les textures nécessaires pour les éléments de la carte.
+Utilise les fonctions des fichiers positions.c et map.c pour gérer la logique du jeu.
+Implémente une boucle principale qui met à jour la fenêtre graphique en fonction des événements (touches pressées, etc.).
+Compilation et exécution :
+
+Assure-toi de compiler tes fichiers avec les bonnes options et de lier avec MiniLibX.
+Exécute le programme et teste son fonctionnement en suivant les règles que tu as définies.
+Assure-toi de bien organiser ton code en utilisant des fonctions modulaires pour faciliter la maintenance et la compréhension du code.
+
+Si tu rencontres des problèmes spécifiques ou si tu as des questions sur une partie particulière du code, n'hésite pas à demander des clarifications ou de l'aide supplémentaire ! Bonne chance avec ton projet à 42.
