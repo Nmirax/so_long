@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/05 11:16:23 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:52:03 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,11 @@ typedef struct s_data
 
 #define MAX_ROWS 100
 #define MAX_COLS 100
+
+int	is_valid_move(t_GameMap *game_map, int rows, int cols);
+int	is_valid_map(t_GameMap *game_map);
+void ft_hook(void *param);
+void replace_current_position_with_wall(t_GameMap *game_map, int current_rows, int current_cols);
+void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int current_cols);
 
 #endif
