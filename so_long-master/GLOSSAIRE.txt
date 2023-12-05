@@ -61,4 +61,14 @@ Assure-toi de compiler tes fichiers avec les bonnes options et de lier avec Mini
 Exécute le programme et teste son fonctionnement en suivant les règles que tu as définies.
 Assure-toi de bien organiser ton code en utilisant des fonctions modulaires pour faciliter la maintenance et la compréhension du code.
 
-Si tu rencontres des problèmes spécifiques ou si tu as des questions sur une partie particulière du code, n'hésite pas à demander des clarifications ou de l'aide supplémentaire ! Bonne chance avec ton projet à 42.
+exmple pour la fonction is valid  move :
+
+11111111111111111111
+00000000000000000001
+00000000000000000001
+11111111111111111111
+
+
+facile a comprendre par exemple si ma ranger et superieur a 0 sa veut dire
+que cest obliger que il y a une case pour allez au dessus alors que si cet 0
+bah on peut pas ya aucune case ta capter.

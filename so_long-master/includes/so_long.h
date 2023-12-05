@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/11/30 13:29:28 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/05 11:16:23 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@
 # include "../printf/include/ft_printf.h"
 # include <stdbool.h>
 
-# define MAX_COLS 100
-
-typedef struct s_map
+typedef struct s_GameMap 
 {
-	char	**map;
-	int		rows;
-	int		cols;
-}	t_GameMap;
+    char	**map;
+    int 	rows;
+    int		cols;
+} t_GameMap;
 
-typedef struct s_position
+
+typedef struct s_data
 {
-	int	x;
-	int	y;
-}	t_position;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*textures[5];
+	t_GameMap	*map;
+}	t_data;
 
-void	initialize_game(void);
-void	read_map(const char *filename);
-void	*mlx_new_window(void *mlx_ptr, int width, int height, char *title);
+#define MAX_ROWS 100
+#define MAX_COLS 100
 
 #endif
