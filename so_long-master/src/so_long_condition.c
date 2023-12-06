@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/06 12:48:13 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:56:00 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ void replace_current_position_with_wall(t_GameMap *game_map, int current_rows, i
 void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int current_cols)
 {
     char    current_char;
-    mlx_t   *mlx;
     
     current_char = game_map->map[current_rows][current_cols];
-    
+
     if (current_char == 'C')
     {
     //appel fonction
@@ -42,11 +41,31 @@ void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int cu
 
 void collect_object(t_GameMap *game_map, int current_rows, int current_cols)
 {   
+     if (current_rows >= 0 && current_rows < game_map->rows &&
+        current_cols >= 0 && current_cols < game_map->cols) 
+        {
     if (game_map->map[current_rows][current_cols] == 'C')
     {
         collected++;
         replace_current_position_with_wall(game_map, current_rows, current_cols);
         ft_printf("Objet collecté !\n");
+    } 
+        else if (current_rows == 0 && current_cols == 0) 
+        {
+            ft_printf("Aucun objet à collecter à cette position.\n");
+        }
+        else if (current_rows == 'P' && current_cols == 'P') 
+        {
+            ft_printf("Aucun objet à collecter à cette position.\n");
+        }
+        else if (current_rows == 'E' && current_cols == 'E') 
+        {
+            ft_printf("Aucun objet à collecter à cette position.\n");
+        }
+    } 
+    else 
+    {
+        ft_printf("Indices hors limites !\n");
     }
 }
 /***********************************************************************************************************************/
@@ -70,7 +89,8 @@ void exit_game(t_data *data, int current_rows, int current_cols)
 int all_coins_collected(t_data *data)
 {
     t_GameMap *game_map = data->map;
-    int i, j;
+    int i; 
+    int j;
 
     i = 0;
     while (i < game_map->rows)
