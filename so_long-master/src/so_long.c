@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/05 18:52:58 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:37:55 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void ft_hook(void *param)
 
 //verification a faire et recoder les fonction
 
-if (all_coins_collected && exit_count == 1)
-	return (map_valid);
+
 if (charactere_on_wall)
 	return (map_invalid);
 if (charactere_coins_collected)
