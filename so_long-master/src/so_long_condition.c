@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/06 14:56:00 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:48:18 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int cu
 
 /***********************************************************************************************************************/
 
-void collect_object(t_GameMap *game_map, int current_rows, int current_cols)
+void collect_object(t_GameMap *game_map, int rows, int current_cols)
 {   
      if (current_rows >= 0 && current_rows < game_map->rows &&
         current_cols >= 0 && current_cols < game_map->cols) 

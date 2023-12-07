@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/06 15:13:54 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:30:12 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void ft_hook(void *param);
 void replace_current_position_with_wall(t_GameMap *game_map, int current_rows, int current_cols);
 void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int current_cols);
 void    exit_game(t_data *data, int current_rows, int current_cols);
-int 	all_coins_collected(t_data *data)
+int 	all_coins_collected(t_data *data);
+int 	key_hook(int keycode t_data *data);
 #endif
