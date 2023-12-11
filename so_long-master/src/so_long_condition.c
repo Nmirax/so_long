@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/07 14:48:18 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:04:02 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,48 +17,71 @@
     collected = 0;
 
 /***********************************************************************************************************************/
-void replace_current_position_with_wall(t_GameMap *game_map, int current_rows, int current_cols) 
+
+void replace_current_position_with_wall(t_data *data) 
 {
-    game_map->map[current_rows][current_cols] = '#';
+   t_GameMap *game_map;
+    int     rows;
+    int     cols;
+     
+     rows = game_map->rows;
+    cols = game_map->cols;
+
+    game_map->map[rows][cols] = '#';
 }
 /***********************************************************************************************************************/
-void handle_collectables_and_exits(t_GameMap *game_map, int current_rows, int current_cols)
-{
+
+void handle_collectables_and_exits(t_data *data)
+{   
+    t_GameMap *game_map;
+    int     rows;
+    int     cols;
     char    current_char;
+
+    rows = game_map->rows;
+    cols = game_map->cols;
     
-    current_char = game_map->map[current_rows][current_cols];
+    current_char = game_map->map[rows][cols];
 
     if (current_char == 'C')
     {
     //appel fonction
-    collect_object(game_map, current_rows, current_cols);
+    collect_object(data);
 }
     else if (current_char == 'E')
-        exit_game(game_map, current_rows, current_cols);   
+        exit_game(data);
 }
 
 /***********************************************************************************************************************/
 
-void collect_object(t_GameMap *game_map, int rows, int current_cols)
-{   
-     if (current_rows >= 0 && current_rows < game_map->rows &&
-        current_cols >= 0 && current_cols < game_map->cols) 
-        {
-    if (game_map->map[current_rows][current_cols] == 'C')
+void collect_object(t_data *data)
+{ 
+    t_GameMap *game_map;
+    int rows = game_map->rows;
+    int cols = game_map->cols;
+
+    game_map = data->map;
+    
+    if (rows >= 0 && rows < game_map->rows &&
+        cols >= 0 && cols < game_map->cols) 
+    {
+        char current_char = game_map->map[rows][cols];
+
+        if (current_char == 'C')
     {
         collected++;
-        replace_current_position_with_wall(game_map, current_rows, current_cols);
+        replace_current_position_with_wall(data);
         ft_printf("Objet collecté !\n");
     } 
-        else if (current_rows == 0 && current_cols == 0) 
+        else if (rows == 0 && cols == 0) 
         {
             ft_printf("Aucun objet à collecter à cette position.\n");
         }
-        else if (current_rows == 'P' && current_cols == 'P') 
+        else if (rows == 'P' && cols == 'P') 
         {
             ft_printf("Aucun objet à collecter à cette position.\n");
         }
-        else if (current_rows == 'E' && current_cols == 'E') 
+        else if (rows == 'E' && cols == 'E') 
         {
             ft_printf("Aucun objet à collecter à cette position.\n");
         }
@@ -70,9 +93,18 @@ void collect_object(t_GameMap *game_map, int rows, int current_cols)
 }
 /***********************************************************************************************************************/
 
-void exit_game(t_data *data, int current_rows, int current_cols)
+void exit_game(t_data *data)
 {
-    if (data->map->map[current_rows][current_cols] == 'E')
+    t_GameMap *game_map; 
+    
+    int rows;
+    int cols;
+
+    game_map = data->map;
+    rows = game_map->rows;
+    cols = game_map->cols;
+
+    if (game_map->map[rows][cols] == 'E')
     {
         if (all_coins_collected(data))
         {
