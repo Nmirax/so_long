@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/12 15:15:47 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:28:38 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,21 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
     game_map->rows = i;
     game_map->cols = MAX_COLS;
 }
+
+// char	*ft_strncpy(char *dest, char *src, unsigned int n)
+// {
+// 	unsigned int	i;
+
+// 	i = 0;
+// 	while (src[i] != '\0' && i < n)
+// 	{
+// 		dest[i] = src[i];
+// 		++i;
+// 	}
+// 	while (i < n)
+// 	{
+// 		dest[i] = '\0';
+// 		i++;
+// 	}
+// 	return (dest);
+// }

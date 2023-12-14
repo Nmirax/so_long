@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/12 14:12:08 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/14 13:23:09 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,18 @@ void	draw_textures(t_data *data)
 		}
 		rows++;
 	}
+}
+
+void free_textures(t_data *data)
+{
+    int i = 0;
+    while (i < NUM_TEXTURES)
+    {
+        if (data->textures[i])
+        {
+            mlx_delete_texture(data->textures[i]);
+            data->textures[i] = NULL;
+        }
+        i++;
+    }
 }
