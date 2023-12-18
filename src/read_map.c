@@ -6,11 +6,22 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/14 13:28:38 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:22:45 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int has_ber_extention(const char *filename)
+{
+    const char *dot;
+
+    dot = strrchr(filename, '.'); //change fonction
+        if (!dot || dot == filename)
+            return (0);
+                return (strcmp(dot, ".ber") == 0); //change fonction
+}
+
 
 void read_map_from_file(char *filename, t_GameMap *game_map)
 {
@@ -18,7 +29,12 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
     char    buffer[MAX_COLS + 1];
     int     bytes_read;
     int     i;
-
+    
+    if (!has_ber_extention(filename))
+    {
+        write(2, "Error: File is not a .ber file\n", 31);
+            exite(EXIT_FAILURE);
+    }
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
@@ -39,7 +55,7 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
         buffer[bytes_read] = '\0';
 
         // Copy the buffer to the map
-        strncpy(game_map->map[i], buffer, MAX_COLS);
+        strncpy(game_map->map[i], buffer, MAX_COLS); //changer la fonction
         i++;
     }
 
@@ -54,21 +70,3 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
     game_map->rows = i;
     game_map->cols = MAX_COLS;
 }
-
-// char	*ft_strncpy(char *dest, char *src, unsigned int n)
-// {
-// 	unsigned int	i;
-
-// 	i = 0;
-// 	while (src[i] != '\0' && i < n)
-// 	{
-// 		dest[i] = src[i];
-// 		++i;
-// 	}
-// 	while (i < n)
-// 	{
-// 		dest[i] = '\0';
-// 		i++;
-// 	}
-// 	return (dest);
-// }

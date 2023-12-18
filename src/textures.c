@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/14 13:23:09 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/18 14:29:11 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,54 +25,53 @@ void	load_textures(t_data *data)
 	data->textures[7] = mlx_load_xpm42("escape.xpm");
 }
 
-void	draw_textures(t_data *data)
+void draw_textures(t_data *data)
 {
-	int		rows;
-	int		cols;
-	int		x;
-	int		y;
-	char	symbol;
-	
-	rows = 0;
-	cols = 0;
-		while(rows < data->map->rows)
-		{
-			while(cols <data->map->cols)
-				{
-			symbol = data->map->map[rows][cols];
+    int rows, cols, x, y;
+    char symbol;
 
-			x = cols * 16;
-			y = rows * 16;
+    rows = 0;
+    while (rows < data->map->rows)
+    {
+        cols = 0;
+        while (cols < data->map->cols)
+        {
+            symbol = data->map->map[rows][cols];
+            x = cols * 16;
+            y = rows * 16;
 
-			if (symbol == '1') 
-			{
+            if (symbol == '1') 
+            {
                 mlx_image_to_window(data->mlx_ptr, data->textures[5], x, y);
-            } 
-			// else if (symbol == '0')
-			// {
-			// 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->textures[7], x, y);
-			// }
-			else if (symbol == 'E')
-			{
-				mlx_image_to_window(data->mlx_ptr, data->textures[7], x, y);
-			}
-			else if (symbol == 'P' || symbol == '0' || symbol == 'C' || symbol == '#' || symbol == '1')
-			{
-				if (key_hook(13, data))
-					mlx_image_to_window(data->mlx_ptr, data->textures[1], x, y);
-				if (key_hook(1, data))
-					mlx_image_to_window(data->mlx_ptr, data->textures[0], x, y);
-				if (key_hook(16, data))
-					mlx_image_to_window(data->mlx_ptr, data->textures[1], x, y);
-				if (key_hook(2, data))
-					mlx_image_to_window(data->mlx_ptr, data->textures[3], x, y);
-			}
-			cols++;
-		}
-		rows++;
-	}
+            }
+            else if (symbol == 'E')
+            {
+                mlx_image_to_window(data->mlx_ptr, data->textures[7], x, y);
+            }
+            else if (symbol == 'P' || symbol == '0' || symbol == 'C' || symbol == '#' || symbol == '1')
+            {
+                void *player_texture = choose_player_texture(data); // Une nouvelle fonction pour choisir la texture
+                mlx_image_to_window(data->mlx_ptr, player_texture, x, y);
+            }
+            cols++;
+        }
+        rows++;
+    }
 }
 
+void *choose_player_texture(t_data *data)
+{
+	if (data->player.direction == UP)
+		return data->textures[1];
+	else if (data->player.direction == DOWN)
+		return data->textures[0];
+	else if (data->player.direction == RIGHT)
+		return data->textures[3];
+	else if (data->player.direction == LEFT)
+		return data->textures[2];
+
+
+}
 void free_textures(t_data *data)
 {
     int i = 0;
