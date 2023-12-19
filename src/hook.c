@@ -6,15 +6,17 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:32 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/18 14:01:53 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/19 18:12:58 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	key_hook (t_data *data)
+void	key_hook (void *param)
 {
+	t_data *data;
 
+	data = (t_data *)param;
 		if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_ESCAPE))
 				mlx_close_window(data->mlx_ptr);
 	else if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_W))
@@ -31,6 +33,7 @@ int	key_hook (t_data *data)
 		{
 			data->map->rows++;
 			data->player.direction = RIGHT;
+			
 		}
 	else if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_S))
 		{
@@ -45,5 +48,4 @@ int	key_hook (t_data *data)
 		}
 		mlx_close_window(data->mlx_ptr);
 	}
-	return (0);
 }

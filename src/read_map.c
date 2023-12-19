@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/18 13:22:45 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/19 18:14:03 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
     if (!has_ber_extention(filename))
     {
         write(2, "Error: File is not a .ber file\n", 31);
-            exite(EXIT_FAILURE);
+            exit(EXIT_FAILURE);
     }
     fd = open(filename, O_RDONLY);
     if (fd == -1)

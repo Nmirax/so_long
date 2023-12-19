@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/18 14:29:11 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/19 13:35:16 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void draw_textures(t_data *data)
     }
 }
 
-void *choose_player_texture(t_data *data)
+int *choose_player_texture(t_data *data)
 {
 	if (data->player.direction == UP)
 		return data->textures[1];
@@ -69,9 +69,11 @@ void *choose_player_texture(t_data *data)
 		return data->textures[3];
 	else if (data->player.direction == LEFT)
 		return data->textures[2];
-
+    else
+        return data->textures[0];
 
 }
+
 void free_textures(t_data *data)
 {
     int i = 0;
