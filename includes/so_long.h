@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/19 18:13:04 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/21 13:10:34 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ typedef struct s_data
 
 
 
-#define MAX_ROWS 100
-#define MAX_COLS 100
-#define NUM_TEXTURES 7
-#define WIDTH 256
-#define HEIGHT 256
+#define MAX_ROWS 31
+#define MAX_COLS 7
+#define NUM_TEXTURES 8
+#define WIDTH 30
+#define HEIGHT 6
 
 void	replace_current_position_with_wall(t_data *data);
 void	handle_collectables_and_exits(t_data *data);
@@ -70,7 +70,7 @@ int		is_valid_map(t_data *data);
 void	key_hook (void *param);
 void	update(t_data *data);
 int		game_loop(t_data *data);
-void	load_textures(t_data *data);
+int     load_textures(t_data *data);
 void	draw_textures(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
 void	allocate_map_memory(t_GameMap *game_map);

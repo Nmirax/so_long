@@ -6,15 +6,18 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/19 13:35:16 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/21 11:05:58 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	load_textures(t_data *data)
+int load_textures(t_data *data)
 {
 
+    int i;
+
+    i = 0;
 	data->textures[0] = mlx_load_xpm42("bas.xpm");
 	data->textures[1] = mlx_load_xpm42("haut.xpm");
 	data->textures[2] = mlx_load_xpm42("gauche.xpm");
@@ -23,17 +26,28 @@ void	load_textures(t_data *data)
 	data->textures[5] = mlx_load_xpm42("mur.xpm");
 	data->textures[6] = mlx_load_xpm42("sol.xpm");
 	data->textures[7] = mlx_load_xpm42("escape.xpm");
+    while (i < NUM_TEXTURES)
+    {
+        if (data->textures[i] == NULL)
+            return 0; 
+        i++;
+    }
+    return 1; 
 }
+
 
 void draw_textures(t_data *data)
 {
-    int rows, cols, x, y;
+    int rows;
+    int cols;
+    int x;
+    int y;;
     char symbol;
 
     rows = 0;
+    cols = 0;
     while (rows < data->map->rows)
     {
-        cols = 0;
         while (cols < data->map->cols)
         {
             symbol = data->map->map[rows][cols];

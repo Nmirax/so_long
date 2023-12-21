@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/19 18:14:03 by abakhaev         ###   ########.fr       */
+/*   Updated: 2023/12/21 16:14:04 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int has_ber_extention(const char *filename)
     dot = strrchr(filename, '.'); //change fonction
         if (!dot || dot == filename)
             return (0);
-                return (strcmp(dot, ".ber") == 0); //change fonction
+                return (strcmp(dot, ".ber") == 0);
 }
 
 
@@ -29,7 +29,8 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
     char    buffer[MAX_COLS + 1];
     int     bytes_read;
     int     i;
-    
+
+    i = 0;
     if (!has_ber_extention(filename))
     {
         write(2, "Error: File is not a .ber file\n", 31);
@@ -41,8 +42,6 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
         perror("Error opening file");
         exit(EXIT_FAILURE);
     }
-
-    i = 0;
     while ((bytes_read = read(fd, buffer, MAX_COLS)) > 0)
     {
         if (i >= MAX_ROWS)
@@ -50,15 +49,12 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
             perror("Too many rows in the map");
             exit(EXIT_FAILURE);
         }
-
-        // Null-terminate the buffer
         buffer[bytes_read] = '\0';
-
-        // Copy the buffer to the map
-        strncpy(game_map->map[i], buffer, MAX_COLS); //changer la fonction
+        strncpy(game_map->map[i], buffer, MAX_COLS);
+        printf("test\n");
         i++;
+    
     }
-
     close(fd);
 
     if (i <= 0)
