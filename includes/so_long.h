@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/08 11:32:18 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/09 15:40:27 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*textures[7];
+	void		*textures[8];
 	t_GameMap	*map;
 	t_Player	player;
 }	t_data;
@@ -57,8 +57,8 @@ typedef struct s_data
 #define MAX_ROWS 31
 #define MAX_COLS 36
 #define NUM_TEXTURES 8
-#define WIDTH 31
-#define HEIGHT 36
+#define WIDTH 1920
+#define HEIGHT 1080
 
 void	replace_current_position_with_wall(t_data *data);
 void	handle_collectables_and_exits(t_data *data);
@@ -68,10 +68,10 @@ int		all_coins_collected(t_data *data);
 int		is_valid_move(t_data *data);
 int		is_valid_map(t_data *data);
 void	key_hook (void *param);
-void	update(t_data *data);
 int		game_loop(t_data *data);
 int     load_textures(t_data *data);
 void	draw_textures(t_data *data);
+void    draw_textures2(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
 void	allocate_map_memory(t_GameMap *game_map);
 void	*free_map_memory(t_GameMap *game_map);
