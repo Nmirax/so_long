@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/09 15:40:27 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:13:47 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef enum e_Direction
 
 typedef struct s_Player 
 {
+    int x;
+    int y;
     t_Direction direction;
 
 } t_Player;
@@ -48,17 +50,18 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*textures[8];
+    void        *images[8];
 	t_GameMap	*map;
 	t_Player	player;
 }	t_data;
 
 
 
-#define MAX_ROWS 31
+#define MAX_ROWS 6
 #define MAX_COLS 36
-#define NUM_TEXTURES 8
-#define WIDTH 1920
-#define HEIGHT 1080
+#define NUM_TEXTURES 3
+#define WIDTH 1296
+#define HEIGHT 186
 
 void	replace_current_position_with_wall(t_data *data);
 void	handle_collectables_and_exits(t_data *data);
@@ -79,4 +82,6 @@ void 	free_textures(t_data *data);
 int		has_ber_extention(const char *filename);
 int     *choose_player_texture(t_data *data);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+void    refresh_window(void *param);
+int     display_image(t_data *data);
 #endif

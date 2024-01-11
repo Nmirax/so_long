@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/21 13:10:21 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/11 11:55:10 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,27 @@ void replace_current_position_with_wall(t_data *data)
 /***********************************************************************************************************************/
 
 void handle_collectables_and_exits(t_data *data)
-{   
+{
     t_GameMap *game_map;
-    int     rows;
-    int     cols;
+    int     player_x;
+    int     player_y;
     char    current_char;
     
-    game_map =data->map;
-    rows = game_map->rows;
-    cols = game_map->cols;
+    game_map = data->map;
+    player_x = data->player.x; 
+    player_y = data->player.y;
     
-    current_char = game_map->map[rows][cols];
+    current_char = game_map->map[player_y][player_x];
 
     if (current_char == 'C')
     {
-    //appel fonction
-    collect_object(data);
-}
+        // Appel fonction pour collecter l'objet
+        collect_object(data);
+    }
     else if (current_char == 'E')
+    {
         exit_game(data);
+    }
 }
 
 /***********************************************************************************************************************/

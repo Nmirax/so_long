@@ -6,20 +6,29 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/09 17:39:52 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/11 14:16:20 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	game_loop(t_data *data)
+void refresh_window(void *param)
 {
-        // draw_textures(data);
-		mlx_loop_hook(data->mlx_ptr, key_hook, &data);
-        mlx_loop(data->mlx_ptr);
-        handle_collectables_and_exits(data);
-        mlx_close_window(data->mlx_ptr);
-            return (0);
+    t_data *data = (t_data *)param;
+    draw_textures(data);
+    draw_textures2(data);
+    display_image(data);
+    handle_collectables_and_exits(data);
+    
+}
+
+int game_loop(t_data *data)
+{
+    mlx_loop_hook(data->mlx_ptr, refresh_window, data); // Hook pour rafraîchir la fenêtre
+    mlx_loop_hook(data->mlx_ptr, key_hook, data); // Hook pour les entrées clavier
+    mlx_loop(data->mlx_ptr); // Démarre la boucle d'événements
+    mlx_close_window(data->mlx_ptr); // Ferme la fenêtre après la fin de la boucle
+    return (0);
 }
 
 int main(int argc, char **argv)
@@ -56,7 +65,7 @@ int main(int argc, char **argv)
         free(data);
         return EXIT_FAILURE; 
     }
-
+    
     if (load_textures(data))
     {   
         mlx_close_window(data->mlx_ptr);
