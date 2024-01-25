@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/11 14:16:20 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:45:51 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 void refresh_window(void *param)
 {
     t_data *data = (t_data *)param;
-    draw_textures(data);
-    draw_textures2(data);
-    display_image(data);
     handle_collectables_and_exits(data);
     
 }
@@ -66,13 +63,17 @@ int main(int argc, char **argv)
         return EXIT_FAILURE; 
     }
     
-    if (load_textures(data))
-    {   
-        mlx_close_window(data->mlx_ptr);
-        free(data->map);
-        free(data);
-        return EXIT_FAILURE;
-    }
+    xpm_t* xpm = mlx_load_xpm42("./src/coins.xpm42");
+       if (!xpm)
+        error(); 
+    
+    mlx_image_t *img = mlx_texture_to_image(data->mlx_ptr, &xpm->texture);
+    if (!img)
+        error();
+        
+    if (mlx_image_to_window(data->mlx_ptr, img, 0, 0) < 0)
+        error();
+
 
     data->map->rows = MAX_ROWS; 
     data->map->cols = MAX_COLS;
@@ -81,7 +82,4 @@ int main(int argc, char **argv)
     game_loop(data);
     mlx_loop(data->mlx_ptr);
     free_map_memory(data->map);
-    free_textures(data);
-    free(data);
-    return EXIT_SUCCESS;
 }

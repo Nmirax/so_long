@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/11 14:13:47 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:38:48 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_data
 
 #define MAX_ROWS 6
 #define MAX_COLS 36
-#define NUM_TEXTURES 3
+#define NUM_TEXTURES 8
 #define WIDTH 1296
 #define HEIGHT 186
 
@@ -72,16 +72,11 @@ int		is_valid_move(t_data *data);
 int		is_valid_map(t_data *data);
 void	key_hook (void *param);
 int		game_loop(t_data *data);
-int     load_textures(t_data *data);
-void	draw_textures(t_data *data);
-void    draw_textures2(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
 void	allocate_map_memory(t_GameMap *game_map);
 void	*free_map_memory(t_GameMap *game_map);
-void 	free_textures(t_data *data);
 int		has_ber_extention(const char *filename);
-int     *choose_player_texture(t_data *data);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void    refresh_window(void *param);
-int     display_image(t_data *data);
+void    error(void);
 #endif
