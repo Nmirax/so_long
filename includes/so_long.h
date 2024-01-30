@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/25 15:38:48 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/30 19:10:49 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,30 @@ typedef struct s_Player
 
 } t_Player;
 
+typedef struct s_Textures 
+{
+    const char *sol;
+    const char *mur;
+    const char *exit;
+    const char *player;
+}   t_Textures;
+
 typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*textures[8];
-    void        *images[8];
 	t_GameMap	*map;
 	t_Player	player;
 }	t_data;
 
 
 
+
 #define MAX_ROWS 6
 #define MAX_COLS 36
-#define NUM_TEXTURES 8
-#define WIDTH 1296
-#define HEIGHT 186
+#define WIDTH 2176
+#define HEIGHT 384
+
 
 void	replace_current_position_with_wall(t_data *data);
 void	handle_collectables_and_exits(t_data *data);
@@ -79,4 +86,5 @@ int		has_ber_extention(const char *filename);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void    refresh_window(void *param);
 void    error(void);
+void    draw_map(t_data *data);
 #endif

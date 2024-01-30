@@ -6,16 +6,17 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:32 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/25 12:49:04 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/30 18:40:49 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 void key_hook(void *param)
-{
+{ 
+    
     t_data *data = (t_data *)param;
-
+    
     if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_ESCAPE))
         mlx_close_window(data->mlx_ptr);
     else if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_W)) // Déplacer vers le haut
@@ -51,4 +52,6 @@ void key_hook(void *param)
     data->player.x = (data->player.x >= data->map->cols) ? data->map->cols - 1 : data->player.x;
     data->player.y = (data->player.y < 0) ? 0 : data->player.y;
     data->player.y = (data->player.y >= data->map->rows) ? data->map->rows - 1 : data->player.y;
+
+  refresh_window(data);
 }
