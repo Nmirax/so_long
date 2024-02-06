@@ -73,6 +73,7 @@ SRCS        :=      printf/libft/ft_memcpy.c \
                           src/so_long.c \
                           src/read_map.c \
                           src/hook.c \
+                          src/player_instances.c \
 
                           
 OBJS        := $(SRCS:.c=.o)

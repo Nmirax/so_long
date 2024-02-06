@@ -6,23 +6,15 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/30 19:12:12 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:46:12 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 
-void refresh_window(void *param)
-{
-    t_data *data = (t_data *)param;
-    
-    draw_map(data);
-    handle_collectables_and_exits(data);
-}
 int game_loop(t_data *data)
 {
-    // mlx_loop_hook(data->mlx_ptr, refresh_window, data);
     mlx_loop_hook(data->mlx_ptr, key_hook, data);
     mlx_loop(data->mlx_ptr);
     return (0);
@@ -36,6 +28,7 @@ int main(int argc, char **argv)
     if (data == NULL) 
     {
         perror("Échec de l'allocation de mémoire pour data");
+        free(data);
         return -1;
     }
 
@@ -47,8 +40,8 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    data->player.x = 3; // Remplace initial_x_position par la valeur souhaitée
-data->player.y = 2; // Remplace initial_y_position par la valeur souhaitée
+    data->player.x = 3;
+data->player.y = 2;
 
     if (argc != 2)
     {
@@ -62,7 +55,6 @@ data->player.y = 2; // Remplace initial_y_position par la valeur souhaitée
     if (data->mlx_ptr == NULL)
     {
         free(data->map);
-        free(data);
         return EXIT_FAILURE; 
     }
     
@@ -73,5 +65,7 @@ data->player.y = 2; // Remplace initial_y_position par la valeur souhaitée
     read_map_from_file(argv[1], data->map);
     draw_map(data);
     game_loop(data);
+
     free_map_memory(data->map);
+    mlx_terminate(data->mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:53:23 by abakhaev          #+#    #+#             */
-/*   Updated: 2023/12/21 13:05:26 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/01/31 11:32:14 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	is_valid_move(t_data *data)
 		return (1);
 	if (cols < cols -1 && game_map->map[rows][cols + 1] != '1')
 		return(1);
-	return (0);
+	return(0);
+	
 }
 
 int	is_valid_map(t_data *data)
