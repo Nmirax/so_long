@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/06 18:46:12 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:45:40 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ data->player.y = 2;
     read_map_from_file(argv[1], data->map);
     draw_map(data);
     game_loop(data);
-
+    collect_object(data);
     free_map_memory(data->map);
     mlx_terminate(data->mlx_ptr);
 }

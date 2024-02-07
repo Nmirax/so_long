@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/06 18:36:30 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:40:39 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct s_Player
 
 } t_Player;
 
+typedef struct s_wall
+{
+	int		x;
+	int		y;
+}	t_wall;
 
 typedef struct s_data
 {
@@ -47,11 +52,16 @@ typedef struct s_data
     mlx_image_t *soll;
     mlx_image_t *murr;
     mlx_image_t *coinss;
+    mlx_image_t *escapee;
     mlx_texture_t *droite;
+    mlx_texture_t   *escape;
     mlx_texture_t  *sol;
     mlx_texture_t  *mur;
     mlx_texture_t   *coins;
+    int             wall_count;
     int     index;
+    int     collected_coins;
+    t_wall			*wall;
 }	t_data;
 
 
@@ -62,13 +72,9 @@ typedef struct s_data
 #define HEIGHT 384
 
 
-void	replace_current_positchatteion_with_wall(t_data *data);
-void	handle_collectables_and_exits(t_data *data);
-void	collect_object(t_data *data);
+void collect_object(t_data *data);
 void	exit_game(t_data *data);
 int		all_coins_collected(t_data *data);
-int		is_valid_move(t_data *data);
-int		is_valid_map(t_data *data);
 void	key_hook (void *param);
 int		game_loop(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
