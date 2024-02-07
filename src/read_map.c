@@ -6,11 +6,29 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/01/09 16:19:09 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/07 13:39:24 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest[i] = src[i];
+		++i;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
+}
 
 int has_ber_extention(const char *filename)
 {
@@ -46,7 +64,7 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
         write(2, "Error: Too many rows in the map\n", 33);
         exit(EXIT_FAILURE);
     }
-    strncpy(game_map->map[i], buffer, MAX_COLS);//add fonction
+    ft_strncpy(game_map->map[i], buffer, MAX_COLS);//add fonction
     i++;
 }
     close(fd);

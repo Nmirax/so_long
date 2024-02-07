@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 12:40:39 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/07 14:58:42 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ typedef struct s_data
     int             wall_count;
     int     index;
     int     collected_coins;
+    int     moove_count;
+    int			map_exit;
+	int			collectible_count;
+    int         start_pos;
+    int         count_line;
+    int				map_size;
     t_wall			*wall;
 }	t_data;
 
@@ -88,4 +94,9 @@ void    player_up(t_data *data);
 void    player_down(t_data *data);
 void    player_right(t_data *data);
 void    player_left(t_data *data);
+void	save_player_pos(t_data *data, int i, int j);
+int	    check_sign(t_data *data);
+int     check_size(t_data *data);
+void	ft_free_image(t_data *data);
+int error_message(char *message, int boolean);
 #endif

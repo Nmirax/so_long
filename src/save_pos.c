@@ -1,13 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_position.c                                 :+:      :+:    :+:   */
+/*   save_pos.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 11:53:23 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 12:40:22 by abakhaev         ###   ########.fr       */
+/*   Created: 2024/02/07 13:27:00 by abakhaev          #+#    #+#             */
+/*   Updated: 2024/02/07 13:28:48 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	save_player_pos(t_data *data, int i, int j)
+{
+    data->start_pos++;
+    data->player.y = i;
+    data->player.x = j;
+}

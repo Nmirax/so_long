@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:28 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 11:22:10 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/07 12:52:23 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void player_up(t_data *data)
     {
         data->droitee->instances->y -= 64;
         data->player.y--;
+        ft_printf("you mooved %d times\n", data->moove_count++);
     }
     return;
 }
@@ -28,6 +29,7 @@ void player_down(t_data *data)
     {
         data->droitee->instances->y += 64;
         data->player.y++;
+        ft_printf("you mooved %d times\n", data->moove_count++);
     }
     return;
 }
@@ -38,6 +40,7 @@ void player_right(t_data *data)
     {
         data->droitee->instances->x += 64;
         data->player.x++;
+        ft_printf("you mooved %d times\n", data->moove_count++);
     }
     return;
 }
@@ -49,6 +52,7 @@ void player_left(t_data *data)
     {
         data->droitee->instances->x -= 64;
         data->player.x--;
+        ft_printf("you mooved %d times\n", data->moove_count++);
     }
     return;
 }
