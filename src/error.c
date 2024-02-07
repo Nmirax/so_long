@@ -12,6 +12,7 @@
 
 #include "../includes/so_long.h"
 
+/*
 int error_message(char *message, int boolean)
 {
     if(boolean == 1)
@@ -46,4 +47,4 @@ void	ft_free_image(t_data *data)
 		i++;
 	}
 	free(data->escapee);
-}
+}*/
