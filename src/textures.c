@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 12:27:30 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 10:45:28 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,17 @@ void draw_map(t_data *data)
             break;
         y++;
     }
+}
+
+void	free_wall(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->murr && i < data->wall_count)
+	{
+		mlx_delete_image(data->mlx_ptr, data->murr);
+		i++;
+	}
+	free(data->murr);
 }

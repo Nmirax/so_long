@@ -15,6 +15,7 @@ FLAGS    := -Wall -Wextra -Werror
 ################################################################################
 
 SRCS        :=      src/hook.c \
+                          src/parsing2.c \
                           src/memory.c \
                           src/save_pos.c \
                           src/error.c \

@@ -6,26 +6,27 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:53:23 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 14:55:52 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:27:43 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 
-// int check_map(t_data *data)
-// {
-//     int items;
-    
-//     if (check_sign(data) == false)
-        
-//     if(check_size(data) == false)
+int check_map(t_data *data)
+{   
+    if (check_sign(data) == false)
+        free_all(data, "Wrong caractere in map\n", 1);
+    if(check_size(data) == false)
+        free_all(data, "Map is not a rectangle\n", 1);
+    if (check_count(data) == false)
+        free_all(data, "Wrong number of Start, Exit or collectible\n", 1);
+    if(check_walls(data) == false)
+        free_all(data, "Map not surrounded by walls\n", 1);
 
-//     if (check_count(data) == false)
+    return (0);
+}
 
-//     if(check_walls(data) == false)
-
-// }
 
 
 int check_count(t_data *data)
@@ -61,6 +62,8 @@ int check_count(t_data *data)
 
 int	check_sign(t_data *data)
 {
+    if (data == NULL || data->map == NULL || data->map->map == NULL)
+		return false;
 	int	i;
 	int	j;
 
@@ -106,29 +109,4 @@ int check_size(t_data *data)
         i++;
     }
     return (true);
-}
-
-
-int check_walls(t_data *data)
-{
-    int line_lenght;
-    int i;
-
-    i = 0;
-        line_lenght = ft_strlen(data->map->map[0]) - 1;
-            while (i < line_lenght)
-                {
-                    if ((data->map->map[0][i] != '1'))
-                        return (false);
-                    i++;
-                }
-            i = 0;
-        while (i < data->count_line)
-        {
-            if ((data->map->map[i][0] != '1')
-            || (data->map->map[i][line_lenght - 1] != '1'))
-                return (false);
-            i++;
-        }
-        return(true);
 }

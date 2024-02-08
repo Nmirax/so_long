@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 14:58:42 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 12:30:06 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "../printf/include/ft_printf.h"
 # include <stdbool.h>
+
 
 typedef struct s_GameMap 
 {
@@ -97,6 +98,13 @@ void    player_left(t_data *data);
 void	save_player_pos(t_data *data, int i, int j);
 int	    check_sign(t_data *data);
 int     check_size(t_data *data);
-void	ft_free_image(t_data *data);
+int     check_walls(t_data *data);
+int     check_count(t_data *data);
+int     check_map(t_data *data);
+void	free_image(t_data *data);
+void    free_texture(t_data *data);
 int error_message(char *message, int boolean);
+void	free_wall(t_data *data);
+void malloc_image(t_data *data);
+void	free_all(t_data *data, char *message, int boolean);
 #endif
