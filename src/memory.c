@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:14:09 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 12:20:24 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 13:52:21 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,24 @@ void malloc_image(t_data *data)
     if (data->droitee == NULL || data->coinss == NULL || data->murr == NULL ||
         data->soll == NULL || data->escapee == NULL) 
         return;
+}
+
+int malloc_data(t_data **data)
+{
+    *data = malloc(sizeof(t_data));
+    if (*data == NULL) 
+    {
+        perror("Échec de l'allocation de mémoire pour data");
+        return -1;
+    }
+
+    (*data)->map = malloc(sizeof(t_GameMap));
+    if ((*data)->map == NULL)
+    {
+        perror("Échec de l'allocation de mémoire pour game_map");
+        free(*data);
+        return EXIT_FAILURE;
+    }
+    
+    return 0;
 }

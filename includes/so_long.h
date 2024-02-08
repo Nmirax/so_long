@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 12:30:06 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:16:50 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	void		*mlx_ptr;
 	void		*win_ptr;
 	t_GameMap	*map;
+    char		*extention_map;
 	t_Player	player;
     mlx_image_t *droitee;
     mlx_image_t *soll;
@@ -103,8 +104,12 @@ int     check_count(t_data *data);
 int     check_map(t_data *data);
 void	free_image(t_data *data);
 void    free_texture(t_data *data);
-int error_message(char *message, int boolean);
+int     error_message(char *message, int boolean);
 void	free_wall(t_data *data);
-void malloc_image(t_data *data);
+void    malloc_image(t_data *data);
 void	free_all(t_data *data, char *message, int boolean);
+int     ft_check_format(t_data *data);
+int     malloc_data(t_data **data);
+void	break_wall(t_data *data, int x, int y);
+int     is_outer_wall(t_data *data, int x, int y);
 #endif

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:53:23 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 12:27:43 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 15:14:36 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 
 int check_map(t_data *data)
-{   
+{
+
     if (check_sign(data) == false)
         free_all(data, "Wrong caractere in map\n", 1);
     if(check_size(data) == false)
@@ -23,10 +24,8 @@ int check_map(t_data *data)
         free_all(data, "Wrong number of Start, Exit or collectible\n", 1);
     if(check_walls(data) == false)
         free_all(data, "Map not surrounded by walls\n", 1);
-
     return (0);
 }
-
 
 
 int check_count(t_data *data)

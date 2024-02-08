@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:28 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/07 12:52:23 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:40:11 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ void player_down(t_data *data)
 }
 
 void player_right(t_data *data) 
-{
-    if (data->player.x < data->map->cols - 1 && data->map->map[data->player.y][data->player.x + 1] != '1') 
+{   
+    
+    if (data->player.x < data->map->cols - 4 && data->map->map[data->player.y][data->player.x + 1] != '1') 
     {
         data->droitee->instances->x += 64;
         data->player.x++;
@@ -47,6 +48,7 @@ void player_right(t_data *data)
 
 void player_left(t_data *data) 
 {
+    
     
     if (data->player.x > 0 && data->map->map[data->player.y][data->player.x - 1] != '1') 
     {

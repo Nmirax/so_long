@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 12:30:02 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:16:40 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,20 @@ int main(int argc, char **argv)
 {
     t_data *data;
 
-     data = malloc(sizeof(t_data));
-    if (data == NULL) 
-    {
-        perror("Échec de l'allocation de mémoire pour data");
-        free(data);
-        return -1;
-    }
-
-    data->map = malloc(sizeof(t_GameMap));
-    if (data->map == NULL)
-    {
-        perror("Échec de l'allocation de mémoire pour game_map");
-        free(data);
-        return EXIT_FAILURE;
-    }
-
-    data->player.x = 3;
-data->player.y = 2;
-
     if (argc != 2)
     {
         write(2, "Usage: ./so_long map.ber\n", 26);
+        free(data->map);
+        free(data);
+        return EXIT_FAILURE;
+    }
+    if (malloc_data(&data) != 0)
+        return -1;
+
+    data->extention_map = strrchr(argv[1], '.');
+    if (data->extention_map == NULL || !ft_check_format(data))
+    {
+        write(2, "Invalid map file format. Use a .ber file.\n", 43);
         free(data->map);
         free(data);
         return EXIT_FAILURE;
@@ -57,15 +49,18 @@ data->player.y = 2;
         free(data->map);
         return EXIT_FAILURE; 
     }
+
     data->map->rows = MAX_ROWS;
     data->map->cols = MAX_COLS;
+    
     allocate_map_memory(data->map);
     read_map_from_file(argv[1], data->map);
     check_map(data);
     draw_map(data);
     game_loop(data);
-    collect_object(data);
+    // collect_object(data);
     free_map_memory(data->map);
     mlx_terminate(data->mlx_ptr);
     free(data);
 }
+

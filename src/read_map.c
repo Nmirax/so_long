@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:49:42 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 11:35:11 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:47:33 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void read_map_from_file(char *filename, t_GameMap *game_map)
         write(2, "Error: Too many rows in the map\n", 33);
         exit(EXIT_FAILURE);
     }
-    ft_strncpy(game_map->map[i], buffer, MAX_COLS);//add fonction
+    ft_strncpy(game_map->map[i], buffer, MAX_COLS);
     i++;
 }
     close(fd);
