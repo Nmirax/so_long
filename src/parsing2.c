@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:27:31 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 16:38:16 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/09 10:23:18 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,30 @@ int	ft_check_format(t_data *data)
 }
 
 void break_wall(t_data *data, int x, int y) {
-    int map_rows = data->map->rows;
-    int map_cols = data->map->cols;
-
-    // Vérifiez si les coordonnées sont à l'intérieur des limites de la carte
-    if (x >= 0 && x < map_cols && y >= 0 && y < map_rows) {
-        // Vérifiez si la case adjacente est un mur ('1')
-        if (data->map->map[y][x] == '1') {
-            // Vérifiez si la case adjacente n'est pas un mur entourant la carte
-            if (!is_outer_wall(data, x, y)) {
-                // Si ce n'est pas un mur entourant la carte, mettez à jour la carte
-                data->map->map[y][x] = '0';
-                draw_map(data);
-            }
-        }
+    if (is_outer_wall(data, x, y)) {
+        // Ne casse pas les murs extérieurs
+        return;
+    }
+    if (data->map->map[y][x] == '1') {
+        data->map->map[y][x] = '0';
+        draw_map(data);
     }
 }
 
-// Fonction pour vérifier si une case est un mur entourant la carte
-int is_outer_wall(t_data *data, int x, int y) {
+
+
+int is_outer_wall(t_data *data, int x, int y) 
+{
     int map_rows = data->map->rows;
     int map_cols = data->map->cols;
 
-    // Si la case est sur le bord de la carte, elle est un mur entourant la carte
-    if (x == 0 || x == map_cols - 1 || y == 0 || y == map_rows - 1) {
+   
+    if (x == 0 || x == map_cols - 3 || y == 0 || y == map_rows - 1) 
+    {
         return true;
-    } else {
+    } 
+    else 
+    {
         return false;
     }
 }

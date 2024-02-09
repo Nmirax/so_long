@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/08 17:17:03 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/09 10:26:43 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void exit_game(t_data *data)
         if (all_coins_collected(data))
         {
             ft_printf("Toutes les pièces ont été collectées !\n");
-            mlx_close_window(data->win_ptr);
+            mlx_close_window(data->mlx_ptr);
         }
         else
         {
