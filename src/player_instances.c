@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 13:20:28 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/09 10:13:14 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/09 11:18:50 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void player_down(t_data *data)
 
 void player_right(t_data *data) 
 {   
-    printf("cols = %i\n", data->player.x);
+    printf( "cols = %i\n", data->player.x);
     if (data->player.x < data->map->cols - 4 && data->map->map[data->player.y][data->player.x + 1] != '1') 
     {
         data->droitee->instances->x += 64;

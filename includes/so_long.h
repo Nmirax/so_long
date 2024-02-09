@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/09 10:18:16 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/09 14:13:25 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void    player_left(t_data *data);
 void	save_player_pos(t_data *data, int i, int j);
 int	    check_sign(t_data *data);
 int     check_size(t_data *data);
-int     check_walls(t_data *data);
+int check_walls(t_data *data);
 int     check_count(t_data *data);
 int     check_map(t_data *data);
 void	free_image(t_data *data);
@@ -112,4 +112,6 @@ int     ft_check_format(t_data *data);
 int     malloc_data(t_data **data);
 void	break_wall(t_data *data, int x, int y);
 int     is_outer_wall(t_data *data, int x, int y);
+void	count_wall(t_data *data);
+bool    is_map_surrounded_by_walls(t_data *data);
 #endif
