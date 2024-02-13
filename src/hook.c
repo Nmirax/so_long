@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 13:16:32 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/09 10:26:26 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:47:44 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ void key_hook(void *param)
     }
     else if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_T))
     {
-        int player_x = data->player.x;
-        int player_y = data->player.y;
+        int player_x;
+        int player_y;
+        
+        player_x = data->player.x;
+        player_y = data->player.y;
+
         break_wall(data, player_x - 1, player_y);
         break_wall(data, player_x + 1, player_y);
         break_wall(data, player_x, player_y - 1);
