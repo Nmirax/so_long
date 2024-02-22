@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/09 14:13:25 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:26:47 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,16 @@ typedef struct s_data
 #define MAX_COLS 36
 #define WIDTH 2176
 #define HEIGHT 384
+#define MAX_COINS 5
 
 
 void collect_object(t_data *data);
 void	exit_game(t_data *data);
 int		all_coins_collected(t_data *data);
-void	key_hook (void *param);
 int		game_loop(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
 void	allocate_map_memory(t_GameMap *game_map);
-void	*free_map_memory(t_GameMap *game_map);
+void    free_map_memory(t_GameMap *game_map);
 int		has_ber_extention(const char *filename);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 void    error(void);
@@ -106,12 +106,15 @@ void	free_image(t_data *data);
 void    free_texture(t_data *data);
 int     error_message(char *message, int boolean);
 void	free_wall(t_data *data);
-void    malloc_image(t_data *data);
 void	free_all(t_data *data, char *message, int boolean);
 int     ft_check_format(t_data *data);
 int     malloc_data(t_data **data);
 void	break_wall(t_data *data, int x, int y);
 int     is_outer_wall(t_data *data, int x, int y);
-void	count_wall(t_data *data);
-bool    is_map_surrounded_by_walls(t_data *data);
+void	my_close_hook(void *param);
+void    free_data(t_data **data);
+void	my_close_hook(void *param);
+void    key_hook(void  *param);
+void    handle_special_keys(t_data *data);
+void    handle_movement_keys(t_data *data);
 #endif

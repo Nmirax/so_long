@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/09 10:26:43 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:14:01 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void collect_object(t_data *data)
     int x = data->player.x;
     int y = data->player.y;
     
-    if (data->map->map[y][x] == 'C') 
+    if (data->map->map[y][x] == 'C')
     {
         data->map->map[y][x] = '0';
         mlx_delete_texture(data->coins);
@@ -40,6 +40,7 @@ void exit_game(t_data *data)
         }
         else
         {
+            
             ft_printf("Vous ne pouvez pas sortir avant de collecter toutes les pièces.\n");
         }
     }
