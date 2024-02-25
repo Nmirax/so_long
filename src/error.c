@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:41:36 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/22 14:11:41 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:28:03 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	free_all(t_data *data, char *message, int boolean)
 	free_data(&data);
 	free_texture(data);
 	free_image(data);
+	if (data->mlx_ptr)
+		mlx_terminate(data->mlx_ptr);
 	error_message(message, boolean);
 	exit(0);
 }
@@ -66,26 +68,21 @@ void	free_texture(t_data *data)
 	if (data->droite)
 	{
 		mlx_delete_texture(data->droite);
-		free(data->droite);
 	}
 	if (data->coins)
 	{
 		mlx_delete_texture(data->coins);
-		free(data->coins);
 	}
 	if (data->mur)
 	{
 		mlx_delete_texture(data->mur);
-		free(data->mur);
 	}
 	if (data->sol)
 	{
 		mlx_delete_texture(data->sol);
-		free(data->sol);
 	}
 	if (data->escape)
 	{
 		mlx_delete_texture(data->escape);
-		free(data->escape);
 	}
 }

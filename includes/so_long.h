@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/22 14:26:47 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/25 14:20:54 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,11 @@ void	my_close_hook(void *param);
 void    key_hook(void  *param);
 void    handle_special_keys(t_data *data);
 void    handle_movement_keys(t_data *data);
+void    load_textures(t_data *data);
+void	draw_player(t_data *data);
+void	load_last(t_data *data);
+void	main_finish(t_data *data);
+void	mlx_inisializer(t_data *data);
+void	main_test(t_data *data);
+void	free_extention_file(t_data *data);
 #endif

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:27:31 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/22 16:06:00 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:00:46 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	break_wall(t_data *data, int x, int y)
 		return ;
 	}
 	if (data->map->map[y][x] == '1')
-	{
+	{	
+		free_texture(data);
 		data->map->map[y][x] = '0';
 		draw_map(data);
 	}
