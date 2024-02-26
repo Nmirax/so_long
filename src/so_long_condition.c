@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 13:03:48 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 15:23:08 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:26:07 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	collect_object(t_data *data)
 		free_texture(data);
 		draw_map(data);
 		data->collected_coins++;
-		ft_printf("Pièce collectée !\n");
+		ft_printf("Coin collected !\n");
 	}
 }
 
@@ -38,7 +38,7 @@ void	exit_game(t_data *data)
 	{
 		if (all_coins_collected(data))
 		{
-			ft_printf("Toutes les pièces ont été collectées !\n");
+			ft_printf("All coins have been collected !\n");
 			mlx_close_window(data->mlx_ptr);
 		}
 		else
@@ -63,13 +63,13 @@ int	all_coins_collected(t_data *data)
 		{
 			if (game_map->map[i][j] == 'C')
 			{
-				ft_printf("Il reste des pièces à collecter.\n");
+				ft_printf("There are still coins to collect.\n");
 				return (0);
 			}
 			j++;
 		}
 		i++;
 	}
-	ft_printf("Toutes les pièces ont été collectées !\n");
+	ft_printf("All coins have been collected !\n");
 	return (1);
 }

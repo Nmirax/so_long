@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/26 10:17:05 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:25:22 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	load_textures(t_data *data)
 		|| data->droitee == NULL || data->coinss == NULL || data->murr == NULL
 		|| data->soll == NULL || data->escapee == NULL)
 	{
-		printf("Erreur lors du chargement des textures ou des images\n");
+		printf("Error loading textures or images\n");
 		free(data);
 		free_texture(data);
 		free_image(data);

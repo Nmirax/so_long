@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 11:14:09 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/26 11:40:54 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:23:22 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	allocate_map_memory(t_GameMap *game_map)
 
 	if (game_map->rows <= 0 || game_map->rows > MAX_ROWS)
 	{
-		perror("Nombre de lignes invalide");
+		perror("Invalid number of lines");
 		exit(EXIT_FAILURE);
 	}
 	game_map->map = (char **)malloc(MAX_ROWS * sizeof(char *));
@@ -60,13 +60,13 @@ int	malloc_data(t_data **data)
 	*data = malloc(sizeof(t_data));
 	if (*data == NULL)
 	{
-		perror("Échec de l'allocation de mémoire pour data");
+		perror("Failed to allocate memory for data");
 		return (-1);
 	}
 	(*data)->map = malloc(sizeof(t_GameMap));
 	if ((*data)->map == NULL)
 	{
-		perror("Échec de l'allocation de mémoire pour game_map");
+		perror("Failed to allocate memory for game_map");
 		free(*data);
 		return (EXIT_FAILURE);
 	}
