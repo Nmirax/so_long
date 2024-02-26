@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:01:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/26 11:46:12 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:58:19 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	main_finish(t_data *data)
 	mlx_loop_hook(data->mlx_ptr, &key_hook, data);
 	game_loop(data);
 	mlx_close_hook(data->mlx_ptr, &my_close_hook, data);
-	 free_map_memory(data->map); // Libérer la mémoire de la carte de jeu
+	free_map_memory(data->map);
 	free_texture(data);
 	free_data(&data);
 	free(data);

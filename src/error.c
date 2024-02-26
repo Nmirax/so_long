@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 14:41:36 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 19:00:35 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:55:46 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,8 @@ int	error_message(char *message, int boolean)
 void	free_all(t_data *data, char *message, int boolean)
 {
 	free_map_memory(data->map);
-	free_data(&data);
 	free_texture(data);
 	free_image(data);
-	if (data->mlx_ptr)
-		mlx_terminate(data->mlx_ptr);
 	error_message(message, boolean);
 	exit(0);
 }
