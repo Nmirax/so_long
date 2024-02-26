@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:15:05 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 15:19:46 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:19:27 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	handle_special_keys(t_data *data)
 		if (all_coins_collected(data))
 		{
 			exit_game(data);
-			free_texture(data);
+			// free_texture(data);
 			mlx_close_window(data->mlx_ptr);
 		}
 	}
@@ -68,9 +68,8 @@ void	key_hook(void *param)
 	data = (t_data *)param;
 	if (mlx_is_key_down(data->mlx_ptr, MLX_KEY_ESCAPE))
 	{
-		free_texture(data);
+		// free_texture(data);
 		mlx_close_window(data->mlx_ptr);
-		mlx_terminate(data->mlx_ptr);
 	}
 	else
 	{

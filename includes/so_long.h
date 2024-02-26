@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:41:33 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 14:20:54 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:14:07 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,7 @@ int		game_loop(t_data *data);
 void 	read_map_from_file(char *filename, t_GameMap *game_map);
 void	allocate_map_memory(t_GameMap *game_map);
 void    free_map_memory(t_GameMap *game_map);
-int		has_ber_extention(const char *filename);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-void    error(void);
 void    draw_map(t_data *data);
 void    player_up(t_data *data);
 void    player_down(t_data *data);
@@ -111,9 +109,8 @@ int     ft_check_format(t_data *data);
 int     malloc_data(t_data **data);
 void	break_wall(t_data *data, int x, int y);
 int     is_outer_wall(t_data *data, int x, int y);
-void	my_close_hook(void *param);
 void    free_data(t_data **data);
-void	my_close_hook(void *param);
+void    my_close_hook(void  *param);
 void    key_hook(void  *param);
 void    handle_special_keys(t_data *data);
 void    handle_movement_keys(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 15:36:29 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 14:23:25 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 11:38:29 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	main_test(t_data *data)
 
 int	game_loop(t_data *data)
 {
-	mlx_loop_hook(data->mlx_ptr, key_hook, data);
+	// mlx_loop_hook(data->mlx_ptr, &key_hook, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 10:45:06 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/02/25 15:22:20 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:17:05 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	load_textures(t_data *data)
 		|| data->soll == NULL || data->escapee == NULL)
 	{
 		printf("Erreur lors du chargement des textures ou des images\n");
-		mlx_terminate(data->mlx_ptr);
+		free(data);
 		free_texture(data);
 		free_image(data);
-		free(data);
+		free_wall(data);
 		return ;
 	}
 }
