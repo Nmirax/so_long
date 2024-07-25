@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:10:45 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/07/25 12:20:52 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:10:26 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,25 @@ void	ft_read_and_fill_map(t_data *data, int fd)
 {
 	char	*line;
 
-	while ((line = get_next_line(fd)) || data->count_line == 0)
+	data->index = 0;
+	data->count_line = 0;
+	line = get_next_line(fd);
+	while (line)
 	{
-		if (!line)
-			break ;
-		data->map[data->index] = ft_strdup(line);
-		if (!data->map[data->index])
+		if (data->count_line == 0 || line)
 		{
-			free(line);
-			close(fd);
-			ft_free_all(data, "ft_strdup error", 1);
+			data->map[data->index] = ft_strdup(line);
+			if (!data->map[data->index])
+			{
+				free(line);
+				close(fd);
+				ft_free_all(data, "ft_strdup error", 1);
+			}
+			data->index++;
+			data->count_line++;
 		}
-		data->index++;
-		data->count_line++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	data->map[data->index] = NULL;
 	close(fd);
