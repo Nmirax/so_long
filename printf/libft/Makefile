@@ -6,12 +6,12 @@
 #    By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 11:26:34 by abakhaev          #+#    #+#              #
-#    Updated: 2024/07/15 11:29:27 by abakhaev         ###   ########.fr        #
+#    Updated: 2024/07/25 12:27:32 by abakhaev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        := libft.a
-CC        := gcc
+CC        := cc
 FLAGS    := -Wall -Wextra -Werror 
 
 SRCS        :=      ft_substr.c \

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:05:19 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/07/15 11:49:07 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:23:06 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_data
 
 int		ft_open_map(t_data *data);
 void	ft_copy_map(t_data *data);
+void	ft_init_and_open_map(t_data *data, int *fd);
+void	ft_read_and_fill_map(t_data *data, int fd);
 int		ft_check_map(t_data *data);
 int		ft_check_size(t_data *data);
 int		ft_check_sign(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:02:01 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/07/15 11:48:45 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/07/25 11:37:59 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_check_map(t_data *data)
 
 	if (ft_check_sign(data) == false)
 		ft_free_all(data, "Wrong caractere in map\n", 1);
+	if (ft_check_format(data) == false)
+		ft_free_all(data, "Wrong extention\n", 1);
 	if (ft_check_size(data) == false)
 		ft_free_all(data, "Map is not a rectangle\n", 1);
 	if (ft_check_count(data) == false)

@@ -6,7 +6,7 @@
 /*   By: abakhaev <abakhaev@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 11:00:58 by abakhaev          #+#    #+#             */
-/*   Updated: 2024/07/15 11:48:29 by abakhaev         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:59:39 by abakhaev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_bg_image(t_data *smain)
 		{
 			smain->image_bg[smain->count] = mlx_texture_to_image
 				(smain->mlx_ptr, smain->texture_bg[0]);
-			if (!smain->image_bg)
+			if (!smain->image_bg[0])
 				ft_free_all(smain, "Error loading texture to image", 1);
 			smain->count++;
 			k++;
@@ -62,7 +62,7 @@ int	ft_collectible_image(t_data *data)
 			{
 				data->image_collectible[i] = mlx_texture_to_image
 					(data->mlx_ptr, data->texture_collectible[0]);
-				if (!data->image_collectible)
+				if (!data->image_collectible[0])
 					ft_free_all(data,
 						"Error loading texture to image", 1);
 				i++;
@@ -78,7 +78,7 @@ int	ft_exit_image(t_data *data)
 {
 	data->image_exit[0] = mlx_texture_to_image
 		(data->mlx_ptr, data->texture_exit[0]);
-	if (!data->image_exit)
+	if (!data->image_exit[0])
 		ft_free_all(data, "Error loading texture to image", 1);
 	return (0);
 }
@@ -87,7 +87,7 @@ int	ft_player_image(t_data *data)
 {
 	data->image_player[0] = mlx_texture_to_image
 		(data->mlx_ptr, data->texture_player[0]);
-	if (!data->image_player)
+	if (!data->image_player[0])
 		ft_free_all(data, "Error loading texture to image", 1);
 	return (0);
 }
